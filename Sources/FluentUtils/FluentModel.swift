@@ -4,14 +4,6 @@ public protocol FluentModel: Model {
     associatedtype FieldKeys: FluentFieldKeys
 }
 
-public protocol FluentFieldKeys: RawRepresentable where RawValue == String {}
-
-public extension FluentFieldKeys {
-    var key: FieldKey {
-        FieldKey(stringLiteral: rawValue)
-    }
-}
-
 public extension FieldProperty where Model: FluentModel {
     convenience init(key: Model.FieldKeys) {
         self.init(key: key.key)
