@@ -22,6 +22,11 @@ public extension OptionalFieldProperty where Model: FluentModel {
         self.init(key: key.key)
     }
 }
+public extension GroupProperty where Model: FluentModel {
+    convenience init(key: Model.FieldKeys) {
+        self.init(key: key.key)
+    }
+}
 public extension EnumProperty where Model: FluentModel {
     convenience init(key: Model.FieldKeys) {
         self.init(key: key.key)
