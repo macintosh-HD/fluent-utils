@@ -20,6 +20,17 @@ public extension SchemaBuilder {
         ))
     }
     
+    func updateField<K: FluentFieldKeys>(
+        _ key: K,
+        _ dataType: DatabaseSchema.DataType
+    ) -> Self {
+        self.updateField(key.key, dataType)
+    }
+    
+    func deleteField<K: FluentFieldKeys>(_ key: K) -> Self {
+        self.deleteField(.key(key.key))
+    }
+    
     func unique<K: FluentFieldKeys>(on fields: K..., name: String? = nil) -> Self {
         self.constraint(.constraint(.unique(fields: fields.map { .key($0.key) }), name: name))
     }
